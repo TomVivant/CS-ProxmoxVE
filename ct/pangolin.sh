@@ -64,12 +64,12 @@ function update_script() {
 
     msg_info "Restoring config"
     tar -xzf /opt/pangolin_config_backup.tar.gz -C /opt/pangolin --overwrite
-    rm -f /opt/pangolin_config_backup.tar.gz
+    #rm -f /opt/pangolin_config_backup.tar.gz
     msg_ok "Restored config"
 
     msg_info "Running database migrations"
     cd /opt/pangolin
-    ENVIRONMENT=prod $STD npx drizzle-kit push --config drizzle.sqlite.config.ts
+    ENVIRONMENT=prod $STD npx drizzle-kit push --config drizzle.sqlite.config.ts --force
     msg_ok "Ran database migrations"
 
     msg_info "Updating Badger plugin version"
