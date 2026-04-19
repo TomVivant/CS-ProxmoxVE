@@ -33,7 +33,7 @@ function update_script() {
 
   NODE_VERSION="24" setup_nodejs
 
-  if check_for_gh_release "pangolin" "fosrl/pangolin"; then
+  if check_for_gh_release "pangolin" "fosrl/pangolin" "1.16.2"; then
     msg_info "Stopping Service"
     systemctl stop pangolin
     systemctl stop gerbil
@@ -43,7 +43,7 @@ function update_script() {
     tar -czf /opt/pangolin_config_backup.tar.gz -C /opt/pangolin config
     msg_ok "Created backup"
 
-    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "pangolin" "fosrl/pangolin" "tarball"
+    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "pangolin" "fosrl/pangolin" "tarball" "1.16.2"
     CLEAN_INSTALL=1 fetch_and_deploy_gh_release "gerbil" "fosrl/gerbil" "singlefile" "latest" "/usr/bin" "gerbil_linux_amd64"
 
     msg_info "Updating Pangolin"
